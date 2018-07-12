@@ -9,7 +9,7 @@ def get_the_email_of_a_townhal_from_its_webpage(url)
   page = Nokogiri::HTML(open(url))
   page.css('td').each do |str|
     begin
-      if str.text.chomp.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
+      if str.text.chomp.match?(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
         return str.text
       end
     rescue StandardError => e

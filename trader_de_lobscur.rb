@@ -9,7 +9,7 @@ def find_all_currencies
   currencies = []
   page.css('table#currencies-all tbody tr').each do |x|
     name = x.css('td.currency-name')[0]['data-sort']
-    value = x.css('a.price')[0]['data-usd']
+    value = "$" + x.css('a.price')[0]['data-usd']
     currencies.push({name: name, price: value})
   end
   currencies

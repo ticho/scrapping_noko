@@ -26,8 +26,8 @@ def get_all_deputes_emails(url)
   page.first(10).each do |a|
     # trying to cleanup the str
     name = a.css('span.list_nom').text.gsub(/[^a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]/i, '')
-    first_name = name.split(',')[0].chomp.delete(' ')
-    last_name = name.split(',')[1].chomp.delete(' ')
+    first_name = name.split(',')[1].chomp.delete(' ')
+    last_name = name.split(',')[0].chomp.delete(' ')
     deputee_url = "https://www.nosdeputes.fr" + a.to_a[0][1]
     email = find_email_from_url(deputee_url)
     mails.push({first_name: first_name, last_name: last_name, email: email})

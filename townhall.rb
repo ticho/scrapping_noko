@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
@@ -26,6 +25,7 @@ def get_all_the_urls_of_val_doise_townhalls(url)
     a['class'] == 'lientxt'
   end
   town_list = []
+  # uncomment to get the full list
   # page.each do |a|
   page.first(20).each do |a|
     begin

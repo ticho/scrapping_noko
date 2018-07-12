@@ -26,12 +26,13 @@ def get_all_the_urls_of_val_doise_townhalls(url)
     a['class'] == 'lientxt'
   end
   town_list = []
-  page.each do |a|
+  # page.each do |a|
+  page.first(20).each do |a|
     begin
       email = get_the_email_of_a_townhal_from_its_webpage("http://annuaire-des-mairies.com" + a['href'][1..-1])
       town_list.push({name: a.text, email: email})
     rescue StandardError => e
-      puts "Error with #{a.text}: #{e.message}"
+      # puts "Error with #{a.text}: #{e.message}"
     end
   end
   # binding.pry
